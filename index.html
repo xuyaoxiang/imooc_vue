@@ -7,12 +7,25 @@
 </head>
 
 <body>
-        <div id="app">{{content}}</div>
+        <div id="app">
+            <input type="text" v-model="inputValue">
+            <button v-on:click="handleBtnClick">提交</button>
+            <ul>
+                <li v-for="item in list">{{item}}</li>
+            </ul>
+        </div>
         <script>
             var app=new Vue({
                 el:'#app',
                 data:{
-                    content:'hello world'
+                   list:['第一项数据','第二项数据','第三项数据'],
+                   inputValue:''
+                },
+                methods:{
+                    handleBtnClick:function(){
+                        this.list.push(this.inputValue);
+                        this.inputValue='';
+                    }
                 }
             })
         </script>
